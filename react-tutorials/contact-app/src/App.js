@@ -6,10 +6,33 @@ import PhoneInfoList from './components/PhoneInfoList';
 class App extends Component {
 
   // 화면 렌더링 시, 참조하는 값 -> setState X
-  id = 0;
+  id = 3;
 
   state = {
-    info: [],
+    info: [
+      {
+        id: 0,
+        name: '홍길동',
+        phone: '010-0000-0000',
+      },
+      {
+        id: 1,
+        name: '홍개발',
+        phone: '010-0000-0000',
+      },
+      {
+        id: 2,
+        name: '홍나나',
+        phone: '010-0000-0000',
+      },
+    ],
+    keyword: '',
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      keyword: e.target.value,
+    })
   }
 
   handleCreate = (data) => {
@@ -54,8 +77,15 @@ class App extends Component {
     return (
       <div className="App">
         <PhoneForm onCreate={this.handleCreate} />
+        <input 
+          value={this.state.keyword}
+          onChange={this.handleChange}
+          placeholder="검색..!"
+        />
         <PhoneInfoList
-          data={this.state.info}
+          data={this.state.info.filter(
+            info => info.name.indexOf(this.state.keyword) > -1
+          )}
           onRemove={this.handleRemove}
           onUpdate={this.handleUpdate}
         />

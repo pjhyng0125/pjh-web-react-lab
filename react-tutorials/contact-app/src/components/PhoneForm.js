@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 // state 값에 따른 input value 변경 예제
 class PhoneForm extends Component {
+    // input = null;
+    input = React.createRef();
 
     state = {
         name: '',
@@ -27,7 +29,10 @@ class PhoneForm extends Component {
         this.setState({
             name: '',
             phone: '',
-        })
+        });
+
+        // this.input.focus();
+        this.input.current.focus(); // React.createRef 의 경우, current로 접근 가능
     }
 
     render() {
@@ -39,6 +44,8 @@ class PhoneForm extends Component {
                         placeholder='이름'
                         onChange={this.handleChange}
                         value={this.state.name}
+                        // ref={ref => this.input = ref}
+                        ref={this.input}
                     />
                     <br />
                     <input

@@ -8,6 +8,16 @@ class PhoneInfo extends Component {
         phone: '',
     }
 
+    // 현재와 다음 state, props 비교 (default : true)
+    // react에서는 객체 or 배열 불변성 유지 필요!
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state !== nextState) {
+            return true;
+        }
+        return this.props.info !== nextProps.info;
+    }
+    
+
     handleRemove = () => {
         const { info, onRemove } = this.props;
         onRemove(info.id);
@@ -42,6 +52,8 @@ class PhoneInfo extends Component {
     render() {
         const { name, phone } = this.props.info;
         const { editing } = this.state;
+
+        console.log(name);
 
         const style = {
             border: '1px solid black',
