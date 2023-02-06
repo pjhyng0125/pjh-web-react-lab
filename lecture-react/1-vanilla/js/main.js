@@ -11,12 +11,17 @@ document.addEventListener("DOMContentLoaded", main);
 function main() {
   console.log(tag, "main");
 
+  // MVC 모델 적용
+
+  // model
   const store = new Store(storage);
 
+  // view
   const views = {
     searchFormView: new SearchFormView(),
     searchResultView: new SearchResultView(),
   };
 
+  // controller
   new Controller(store, views);
 }

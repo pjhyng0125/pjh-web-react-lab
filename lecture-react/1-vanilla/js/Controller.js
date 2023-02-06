@@ -26,6 +26,11 @@ export default class Controller {
 
   reset() {
     console.log(tag, "reset");
+
+    // X 버튼 클릭 시, 검색결과 초기화
+    this.store.searchKeyword = '';
+    this.store.searchResult = [];
+    this.render();
   }
 
   render() {
