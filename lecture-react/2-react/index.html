@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture React</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- react -->
+    <script
+    crossorigin
+    src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    
+    <!-- react dom -->
+    <script
+    crossorigin
+    src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    
+    <!-- barbel : 웹 브라우저에서 최신 js 문법 및 JSX 문법 사용하기 위한 용도 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel" src="js/main.js" data-type="module" data-presets="react">
+      /* ex0) react
+      const element = React.createElement("h1", null, "Hello world");
+      console.log('react', element); // 일반 js 객체
+      // 가상돔 : React app 과 dom 사이 위치. 최소한의 연상으로 화면 렌더링
+      ReactDOM.render(element, document.querySelector("#app"));
+      // id가 app인 element 하위에 dom 추가
+      */
+      
+      // ex1) vanila
+      // document.body.innerHTML = '<p>Hello World</p>'
+      
+      /* ex2) vanila
+      const p = document.createElement("p");
+      console.log('dom', p); // dom 객체
+
+      p.textContent = "hello world!";
+      document.body.appendChild(p);
+      */
+
+      /* ex3) jsx : 일반 HTML 처럼 사용
+      const element = <h1>Hello World</h1>;
+      ReactDOM.render(element, document.querySelector("#app"));
+      */
+    </script>
+  </body>
+</html>
