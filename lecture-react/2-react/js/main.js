@@ -1,4 +1,5 @@
 import store from "./js/store.js";
+import { formatRelativeDate } from "./js/helpers.js";
 
 const TabType = {
   KEYWORD: "KEYWORD",
@@ -20,7 +21,15 @@ class App extends React.Component {
       searchResult: [],
       submitted: false,
       activeTabBtn: TabType.KEYWORD,
+      keywordList: [],
+      historyList: [],
     };
+  }
+
+  componentDidMount() {
+    const keywordList = store.getKeywordList();
+    const historyList = store.getHistoryList();
+    this.setState({ keywordList, historyList });
   }
 
   handleReset() {
@@ -47,10 +56,13 @@ class App extends React.Component {
 
   search(searchKeyword) {
     const searchResult = store.search(searchKeyword);
+    const historyList = store.getHistoryList();
 
     // setState는 변경된 필드만 update 관리!
     this.setState({
+      searchKeyword,
       searchResult,
+      historyList,
       submitted: true,
     });
   }
@@ -79,6 +91,18 @@ class App extends React.Component {
     this.setState({
       activeTabBtn: tabType,
     });
+  }
+
+  /**
+   * 최근 검색어
+   */
+  handleClickRemoveHistory(event, keyword) {
+    // 이벤트 버블링 방지
+    event.stopPropagation();
+
+    store.removeHistory(keyword);
+    const historyList = store.getHistoryList();
+    this.setState({ historyList });
   }
 
   // setState로 변경 상태 알려주면 render 함수 호출!
@@ -132,6 +156,38 @@ class App extends React.Component {
         <div className="empty-box">검색 결과가 없습니다...</div>
       );
 
+    const keywordList = (
+      <ul className="list">
+        {this.state.keywordList.map(({ id, keyword }, idx) => {
+          return (
+            <li key={id} onClick={() => this.search(keyword)}>
+              <span className="number">{idx + 1}</span>
+              <span>{keyword}</span>
+            </li>
+          );
+        })}
+      </ul>
+    );
+
+    const historyList = (
+      <ul className="list">
+        {this.state.historyList.map(({ id, keyword, date }, idx) => {
+          return (
+            <li key={id} onClick={() => this.search(keyword)}>
+              <span>{keyword}</span>
+              <span className="date">{formatRelativeDate(date)}</span>
+              <button
+                className="btn-remove"
+                onClick={(event) =>
+                  this.handleClickRemoveHistory(event, keyword)
+                }
+              ></button>
+            </li>
+          );
+        })}
+      </ul>
+    );
+
     const tabs = (
       <>
         <ul className="tabs">
@@ -147,8 +203,8 @@ class App extends React.Component {
             );
           })}
         </ul>
-        {this.state.activeTabBtn === TabType.KEYWORD && <>TODO: 추천검색어</>}
-        {this.state.activeTabBtn === TabType.HISTORY && <>TODO: 최근검색어</>}
+        {this.state.activeTabBtn === TabType.KEYWORD && keywordList}
+        {this.state.activeTabBtn === TabType.HISTORY && historyList}
       </>
     );
 

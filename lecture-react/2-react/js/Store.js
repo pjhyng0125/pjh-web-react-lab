@@ -13,6 +13,9 @@ class Store {
   }
 
   search(keyword) {
+    // 최근 검색어 view에 검색 히스토리 적재
+    this.addHistory(keyword);
+
     return this.storage.productData.filter((product) =>
       product.name.includes(keyword)
     );
