@@ -1,5 +1,4 @@
 import React from "react";
-import { formatRelativeDate } from "../helpers";
 import store from "../Store";
 import List from "./List";
 
@@ -23,32 +22,21 @@ export default class HistoryList extends React.Component {
     });
   }
 
-  handleClickRemoveHistory(event, keyword) {
-    // 이벤트 버블링 방지
-    event.stopPropagation();
-
+  handleClickRemoveHistory(keyword) {
     store.removeHistory(keyword);
     this.fetch();
   }
 
   render() {
+    const { onClick } = this.props;
+    const { historyList } = this.state;
     return (
       <List
-        data={this.state.historyList}
-        onClick={this.props.onClick}
-        renderItem={(item) => {
-          return (
-            <>
-              <span>{item.keyword}</span>
-              <span className="date">{formatRelativeDate(item.date)}</span>
-              <button
-                className="btn-remove"
-                onClick={(event) =>
-                  this.handleClickRemoveHistory(event, item.keyword)
-                }
-              ></button>
-            </>
-          );
+        data={historyList}
+        onClick={onClick}
+        hasDate={true}
+        onRemove={(keyword) => {
+          this.handleClickRemoveHistory(keyword);
         }}
       />
     );
