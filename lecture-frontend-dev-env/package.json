@@ -1,0 +1,16 @@
+{
+  "name": "lecture-frontend-dev-env",
+  "version": "1.0.0",
+  "description": "\"프론트엔드 개발 환경의 이해\" 강의 자료입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.76.2",
+    "webpack-cli": "^5.0.1"
+  }
+}
