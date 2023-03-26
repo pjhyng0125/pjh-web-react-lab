@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>검색</title>
-    <link rel="stylesheet" href="src/main.css">
+    <title>검색 <%= env %></title>
+    <!-- css/style loader 를 활용하여 app.js에서 모듈 import -->
+    <!-- <link rel="stylesheet" href="src/main.css"> -->
   </head>
   <body>
     <div id="app">
@@ -26,8 +27,5 @@
         </div>
       </div>
     </div>
-
-    <!-- TODO: 웹팩으로 빌드한 자바스크립트를 여기에 로딩하세요 -->
-    <script src='dist/main.js'></script>
   </body>
 </html>
