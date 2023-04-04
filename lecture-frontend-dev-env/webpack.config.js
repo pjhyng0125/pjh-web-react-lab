@@ -80,5 +80,5 @@ module.exports = {
       : []),
   ],
   // target: "node",
-  node: false,
+  // node: false,
 };

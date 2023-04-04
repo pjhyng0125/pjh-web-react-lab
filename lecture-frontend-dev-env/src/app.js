@@ -21,3 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
 });
 */
+
+// babel 테스트
+const alert = (msg) => window.alert(msg);
