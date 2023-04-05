@@ -22,7 +22,7 @@ module.exports = {
       //   use: [path.resolve("./my-webpack-loader.js")],
       // },
       {
-        test: /\.css$/, // loader가 처리해야할 파일들의 패턴
+        test: /\.(scss|css)$/, // loader가 처리해야할 파일들의 패턴
         use: [
           process.env.NODE_ENV === "production"
             ? MiniCssExtractPlugin.loader
@@ -31,7 +31,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|svg|gif)$/,
         // loader: "file-loader",
         loader: "url-loader",
         options: {
@@ -40,6 +40,12 @@ module.exports = {
           limit: 20000, // 20kb
         },
         // use: ["file-loader"],
+      },
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        // use: ["babel-loader"],
+        exclude: /node_modules/,
       },
     ],
   },
