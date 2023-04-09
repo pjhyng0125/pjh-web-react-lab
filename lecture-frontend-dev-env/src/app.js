@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 console.log(`[app.js] ${process.env.NODE_ENV}`); // "development"
+
+// eslint-disable-next-line no-console
 console.log(`[app.js] ${NUM}`); // 7
 console.log(`[app.js] ${STR}`); // 1+1
 console.log(`[app.js] ${api.domain}`); // www.devpjh.com
@@ -27,3 +29,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // babel 테스트
 const alert = (msg) => window.alert(msg);
+alert("babel 테스트");
