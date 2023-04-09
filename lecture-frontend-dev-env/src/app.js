@@ -1,5 +1,8 @@
 import MainController from "./controllers/MainController.js";
-import "./main.css";
+// import "./main.css";
+
+// app.scss 사스 파일을 불러올 수 있도록 웹팩 구성 추가 필요
+import "./app.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
   new MainController();

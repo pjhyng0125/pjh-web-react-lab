@@ -25,9 +25,10 @@ module.exports = {
         test: /\.(scss|css)$/, // loader가 처리해야할 파일들의 패턴
         use: [
           process.env.NODE_ENV === "production"
-            ? MiniCssExtractPlugin.loader
-            : "style-loader",
+            ? MiniCssExtractPlugin.loader // 운영
+            : "style-loader", // 개발
           "css-loader",
+          "sass-loader",
         ],
       },
       {
