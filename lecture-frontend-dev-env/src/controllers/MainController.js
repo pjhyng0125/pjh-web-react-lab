@@ -17,20 +17,20 @@ export default class MainController {
     const resultViewEl = document.querySelector("#search-result");
 
     this.formView = new FormView(formViewEl)
-      .on("@submit", e => this.search(e.detail.input))
+      .on("@submit", (e) => this.search(e.detail.input))
       .on("@reset", () => this.renderView());
 
-    this.tabView = new TabView(tabViewEl).on("@change", e =>
+    this.tabView = new TabView(tabViewEl).on("@change", (e) =>
       this.onChangeTab(e.detail.tabName)
     );
 
-    this.keywordView = new KeywordView(keywordViewEl).on("@click", e =>
+    this.keywordView = new KeywordView(keywordViewEl).on("@click", (e) =>
       this.search(e.detail.keyword)
     );
 
     this.historyView = new HistoryView(historyViewEl)
-      .on("@click", e => this.search(e.detail.keyword))
-      .on("@remove", e => this.onRemoveHistory(e.detail.keyword));
+      .on("@click", (e) => this.search(e.detail.keyword))
+      .on("@remove", (e) => this.onRemoveHistory(e.detail.keyword));
 
     this.resultView = new ResultView(resultViewEl);
 

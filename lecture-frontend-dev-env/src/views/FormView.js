@@ -16,8 +16,8 @@ export default class FormView extends View {
   }
 
   bindEvents() {
-    this.on("submit", e => e.preventDefault());
-    this._inputEl.addEventListener("keyup", e => this.onKeyup(e));
+    this.on("submit", (e) => e.preventDefault());
+    this._inputEl.addEventListener("keyup", (e) => this.onKeyup(e));
     this._resetEl.addEventListener("click", () => this.onClickReset());
   }
 

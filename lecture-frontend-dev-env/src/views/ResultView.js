@@ -7,7 +7,7 @@ export default class ResultView extends View {
     super(el);
 
     this.messages = {
-      NO_RESULT: "검색 결과가 없습니다"
+      NO_RESULT: "검색 결과가 없습니다",
     };
   }
 

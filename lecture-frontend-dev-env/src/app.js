@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 console.log(`[app.js] ${process.env.NODE_ENV}`); // "development"
 
 // eslint-disable-next-line no-console
-console.log(`[app.js] ${NUM}`); // 7
-console.log(`[app.js] ${STR}`); // 1+1
-console.log(`[app.js] ${api.domain}`); // www.devpjh.com
+// console.log(`[app.js] ${NUM}`); // 7
+// console.log(`[app.js] ${STR}`); // 1+1
+// console.log(`[app.js] ${api.domain}`); // www.devpjh.com
 
 /* loader 예제
 import "./app.css";
@@ -30,3 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // babel 테스트
 const alert = (msg) => window.alert(msg);
 alert("babel 테스트");
+
+// prettier 테스트
+// var foo = "";
+// console.log();

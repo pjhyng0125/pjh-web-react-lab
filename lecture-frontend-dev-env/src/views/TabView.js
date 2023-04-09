@@ -21,7 +21,7 @@ export default class TabView extends View {
   }
 
   bindEvents() {
-    this.tabItems.forEach(li => {
+    this.tabItems.forEach((li) => {
       li.addEventListener("click", () => this.onClick(li.innerHTML));
     });
   }
@@ -32,7 +32,7 @@ export default class TabView extends View {
   }
 
   setActiveTab(tabName) {
-    this.tabItems.forEach(li => {
+    this.tabItems.forEach((li) => {
       li.className = li.innerHTML === tabName ? "active" : "";
     });
     this.show();

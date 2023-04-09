@@ -5,11 +5,20 @@ module.exports = {
     node: true,
     amd: true,
   },
-  extends: "eslint:recommended",
+  // extends: ["eslint:recommended", "eslint-config-prettier"],
+  extends: ["eslint:recommended", "plugin:prettier/recommended"],
   overrides: [],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  rules: {},
+  plugins: ["prettier"],
+  rules: {
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
+  },
 };
