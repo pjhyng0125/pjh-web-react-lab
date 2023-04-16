@@ -6,9 +6,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const apiMocker = require("connect-api-mocker");
+const OptimizerCSSAssetPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+
+const mode = process.env.NODE_ENV || "development"; // 기본값 development 설정
 
 module.exports = {
-  mode: "development",
+  mode,
   entry: {
     main: "./src/app.js",
   },
@@ -32,6 +37,28 @@ module.exports = {
     proxy: {
       "/api": "http://localhost:8081/",
     },
+    hot: true,
+  },
+  optimization: {
+    minimizer:
+      mode === "production"
+        ? [
+            new OptimizerCSSAssetPlugin(),
+            new TerserPlugin({
+              terserOptions: {
+                compress: {
+                  drop_console: true, // 콘솔 로그를 제거한다
+                },
+              },
+            }),
+          ]
+        : [],
+    splitChunks: {
+      chunks: "all",
+    },
+  },
+  externals: {
+    axios: "axios",
   },
   module: {
     rules: [
@@ -103,6 +130,15 @@ module.exports = {
           }),
         ]
       : []),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "./node_modules/axios/dist/axios.min.js",
+          to: "./axios.min.js",
+          toType: "file",
+        },
+      ],
+    }),
   ],
   // target: "node",
   // node: false,

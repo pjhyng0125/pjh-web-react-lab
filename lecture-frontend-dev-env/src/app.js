@@ -1,9 +1,9 @@
 // import MainController from "./controllers/MainController.js";
 import axios from "axios";
-// import "./main.css";
+import "./app.css";
 
 // app.scss 사스 파일을 불러올 수 있도록 웹팩 구성 추가 필요
-import "./app.scss";
+// import "./app.scss";
 
 document.addEventListener("DOMContentLoaded", async () => {
   // new MainController();
@@ -44,3 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
 // prettier 테스트
 // var foo = "";
 // console.log();
+
+// hot loading 테스트
+if (module.hot) {
+  console.log("핫 모듈 켜짐!");
+
+  // 특정 파일 변경 감지
+  module.hot.accept("./app", () => {
+    console.log("app 모듈 변경됨!");
+  });
+}
