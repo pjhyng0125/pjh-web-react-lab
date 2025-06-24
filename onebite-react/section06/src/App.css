@@ -1,0 +1,16 @@
+body {
+  padding: 10px;
+}
+
+.App {
+  margin: 0 auto; /* 가운데 정렬 - 화면 상 남는 부분 제외 */
+  width: 400px;
+}
+
+.App > section {
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
