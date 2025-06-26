@@ -4,26 +4,63 @@ import PhoneNumberInput from '@components/PhoneNumberInput';
 import './App.css';
 import { useState, type ChangeEvent } from 'react';
 
+type PhoneNumbers = {
+  groom: string;
+  bride: string;
+  father: string;
+  mother: string;
+};
+
 function App() {
-  // const [manPhoneNumber, setManPhoneNumber] = useState<number>(0);
-  const [num, setNum] = useState<string>('');
+  const [phoneNumbers, setPhoneNumbers] = useState<PhoneNumbers>({
+    groom: '',
+    bride: '',
+    father: '',
+    mother: '',
+  });
 
-  const onChange = (newValue: string) => {
-    setNum(newValue);
-  };
+  // PhoneNumberInput input 객체 change 이벤트 함수
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // input name, value 속성 구조 분해 할당
+    const { name, value } = e.target;
 
-  const onChange2 = (e: ChangeEvent<HTMLInputElement>) => {
-    setNum(e.target.value);
+    // 업데이트 함수형 패턴: set* 비동기 함수 -> 이전 상태 가져와서 최신 값 기준 갱신 목적
+    setPhoneNumbers((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
     <>
       <div>
-        <input value={num} onChange={onChange2} />
-        <p>입력된 번호: {num}</p>
-        <PhoneNumberInput title="신랑" value={num} onChange={onChange} />
-        <p>입력된 번호: {num}</p>
+        <h2>☎️ 연락처 - PhoneNumberInput</h2>
+        <PhoneNumberInput
+          title="신랑"
+          name="groom"
+          value={phoneNumbers.groom}
+          onChange={onChange}
+        />
+        <PhoneNumberInput
+          title="신부"
+          name="bride"
+          value={phoneNumbers.bride}
+          onChange={onChange}
+        />
+        <PhoneNumberInput
+          title="아버님"
+          name="father"
+          value={phoneNumbers.father}
+          onChange={onChange}
+        />
+        <PhoneNumberInput
+          title="어머님"
+          name="mother"
+          value={phoneNumbers.mother}
+          onChange={onChange}
+        />
+
+        <h2>📅 예식 일자 - fullcalendar</h2>
         <Fullcalendar />
+
+        <h2>📅 예식 일자 - Reactcalendar</h2>
         <Reactcalendar />
       </div>
     </>

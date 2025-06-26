@@ -16,7 +16,6 @@ const Container = styled.div`
 const Fullcalendar = () => {
   return (
     <div>
-      <h2>📅 fullcalendar</h2>
       <Container>
         <FullCalendar
           plugins={[dayGridPlugin]}

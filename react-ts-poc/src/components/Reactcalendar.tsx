@@ -25,7 +25,6 @@ const Reactcalendar = () => {
 
   return (
     <div>
-      <h2>📅 Reactcalendar</h2>
       <Container>
         <Calendar
           onChange={handleDateChange}
