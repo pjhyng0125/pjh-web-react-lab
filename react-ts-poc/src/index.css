@@ -1,0 +1,11 @@
+/* s: input type="number" 우측 화살표 버튼 제거 */
+/* input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */
+/* e: input type="number" 우측 화살표 버튼 제거 */

@@ -1,33 +1,36 @@
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import '@fullcalendar/common/main.css'; // 공통 스타일
+import styled from '@emotion/styled';
 
-// interface EventInput {
-//   title: string;
-//   date: string; // YYYY-MM-DD 형식
-//   id?: string;
-//   start?: string;
-//   end?: string;
-//   allDay?: boolean;
-// }
+const Container = styled.div`
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto; /* 수평 가운데 정렬 */
+  padding: 0 16px; /* 좌우 여백 */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
 
 const Fullcalendar = () => {
   return (
     <div>
-      <h2>📅 내 캘린더</h2>
-      <FullCalendar
-        plugins={[dayGridPlugin]}
-        initialView="dayGridMonth"
-        headerToolbar={{
-          start: '', // 왼쪽: 비움
-          center: 'title', // 중앙: 캘린더 제목만
-          end: '', // 오른쪽: 비움
-        }}
-        events={[
-          { title: '회의', date: '2025-06-20' },
-          { title: '디자인 리뷰', date: '2025-06-22' },
-        ]}
-      />
+      <h2>📅 fullcalendar</h2>
+      <Container>
+        <FullCalendar
+          plugins={[dayGridPlugin]}
+          initialView="dayGridMonth"
+          headerToolbar={{
+            start: '', // 왼쪽: 비움
+            center: '', // 중앙: 캘린더 제목만
+            end: '', // 오른쪽: 비움
+          }}
+          events={[{ title: '결혼식', date: '2025-06-14' }]}
+          fixedWeekCount={false}
+          contentHeight="auto"
+        />
+      </Container>
     </div>
   );
 };
