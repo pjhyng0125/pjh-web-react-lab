@@ -22,6 +22,14 @@
           console.log(arr);
           instance.clear();
         },
+        onChange: function (selectedDates, dateStr, instance) {
+          console.log('현재 선택된 날짜:', selectedDates);
+
+          // n개 선택 후 달력 닫기
+          if (selectedDates.length >= 3) {
+            instance.close();
+          }
+        },
       });
     </script>
     <div id="target"></div>

@@ -27,6 +27,16 @@ const MultiDatePicker = () => {
           console.log('onClose : ' + _dateStr);
           _instance.clear();
         }}
+        onChange={(
+          selectedDates: Date[],
+          _dateStr: string,
+          _instance: FlatpickrInstance,
+        ) => {
+          // n개 선택 후 달력 닫기
+          if (selectedDates.length >= 3) {
+            _instance.close();
+          }
+        }}
       />
       <div>
         <p>선택한 날짜:</p>
