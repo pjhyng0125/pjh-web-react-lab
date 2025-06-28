@@ -1,6 +1,7 @@
 import Reactcalendar from '@components/Reactcalendar';
 import Fullcalendar from '@components/Fullcalendar';
 import PhoneNumberInput from '@components/PhoneNumberInput';
+import FlatPickr from '@components/MultiDatePicker';
 import './App.css';
 import { useState, type ChangeEvent } from 'react';
 
@@ -31,6 +32,9 @@ function App() {
   return (
     <>
       <div>
+        <h2>📆 날짜 다중 선택 - flatpickr</h2>
+        <FlatPickr />
+
         <h2>☎️ 연락처 - PhoneNumberInput</h2>
         <PhoneNumberInput
           title="신랑"

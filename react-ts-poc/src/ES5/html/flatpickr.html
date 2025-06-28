@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Flatpickr Example</title>
+    <link rel="stylesheet" href="../css/flatpickr.min.css" />
+  </head>
+  <body>
+    <input type="text" id="datepicker" placeholder="날짜를 선택하세요" />
+
+    <script src="../js/flatpickr.min.js"></script>
+    <script>
+      var returnDates = '';
+      flatpickr('#datepicker', {
+        mode: 'multiple',
+        dateFormat: 'Y-m-d',
+        minDate: 'today', // 오늘 이후만 선택 가능
+        onClose: function (selectedDates, dateStr, instance) {
+          returnDates = dateStr;
+          document.getElementById('target').innerHTML = returnDates;
+          var arr = returnDates.replaceAll(/\s+/g, '').split(',');
+          console.log(arr);
+          instance.clear();
+        },
+      });
+    </script>
+    <div id="target"></div>
+  </body>
+</html>
