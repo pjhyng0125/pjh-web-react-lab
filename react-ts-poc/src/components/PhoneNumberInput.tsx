@@ -8,6 +8,25 @@ type Props = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
+const PhoneNumberInput = ({ title, value, name, onChange }: Props) => {
+  return (
+    <div>
+      <Container>
+        <Span>{title}</Span>
+        <NumberInput
+          placeholder="010-0000-0000"
+          type="text"
+          maxLength={11}
+          name={name}
+          value={value}
+          onChange={onChange}
+        />
+      </Container>
+      {/* <p>자식 컴포넌트 입력: {inputValue}</p> */}
+    </div>
+  );
+};
+
 const Container = styled.div`
   width: 100%;
   max-width: 320px;
@@ -31,24 +50,5 @@ const NumberInput = styled.input`
   height: 30px;
   /* box-sizing: border-box; */
 `;
-
-const PhoneNumberInput = ({ title, value, name, onChange }: Props) => {
-  return (
-    <div>
-      <Container>
-        <Span>{title}</Span>
-        <NumberInput
-          placeholder="010-0000-0000"
-          type="text"
-          maxLength={11}
-          name={name}
-          value={value}
-          onChange={onChange}
-        />
-      </Container>
-      {/* <p>자식 컴포넌트 입력: {inputValue}</p> */}
-    </div>
-  );
-};
 
 export default PhoneNumberInput;

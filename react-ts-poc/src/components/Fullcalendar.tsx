@@ -3,16 +3,6 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import '@fullcalendar/common/main.css'; // 공통 스타일
 import styled from '@emotion/styled';
 
-const Container = styled.div`
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto; /* 수평 가운데 정렬 */
-  padding: 0 16px; /* 좌우 여백 */
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
 const Fullcalendar = () => {
   return (
     <div>
@@ -33,5 +23,15 @@ const Fullcalendar = () => {
     </div>
   );
 };
+
+const Container = styled.div`
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto; /* 수평 가운데 정렬 */
+  padding: 0 16px; /* 좌우 여백 */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
 
 export default Fullcalendar;
